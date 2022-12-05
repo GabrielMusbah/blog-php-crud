@@ -1,12 +1,13 @@
 <?php
 
 require 'Config.php';
+require 'src/Artigo.php';
 
-include 'Artigo.php';
 $artigo = new Artigo($mysql);
 $artigos = $artigo->exibirTodos();
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -22,14 +23,15 @@ $artigos = $artigo->exibirTodos();
 
         <?php foreach ($artigos as $artigo) : ?>
         <h2>
-            <a href="artigo.php?id=<?php echo $artigo['id']; ?>">
+                   <a href="artigo.php?id=<?php echo $artigo['id'] ?>">
                 <?php echo $artigo['titulo']; ?>
             </a>
         </h2>
         <p>
-            <?php echo $artigo['conteudo']; ?>
+            <?php echo nl2br($artigo['conteudo']); ?>
         </p>
         <?php endforeach; ?>
+    </div>
         
     </div>
 </body>
